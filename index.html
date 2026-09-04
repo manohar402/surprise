@@ -1,419 +1,92 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Happy Birthday Ammu ❤️</title>
-
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile-fix.css">
 </head>
-
 <body>
-
-    <!-- OPENING SCREEN -->
-
-    <main class="opening-screen" id="openingScreen">
-
-        <div class="ambient-glow"></div>
-
-        <div class="birthday-content">
-
-            <div class="world-symbol">♡</div>
-
-            <p class="small-text">
-                A little celebration...
-            </p>
-
-            <h1>
-                HAPPY<br>
-                <span>BIRTHDAY</span>
-            </h1>
-
-            <div class="name">
-                AMMU
-            </div>
-
-            <div class="rose-line"></div>
-
-            <p class="opening-message">
-                Today is all about you.
-            </p>
-
-            <button id="startButton">
-                BEGIN THE CELEBRATION
-                <span>→</span>
-            </button>
-
+<main class="opening-screen" id="openingScreen">
+    <div class="ambient-glow"></div>
+    <div class="birthday-content">
+        <div class="world-symbol">♡</div>
+        <p class="small-text">A little celebration...</p>
+        <h1>HAPPY<br><span>BIRTHDAY</span></h1>
+        <div class="name">AMMU</div>
+        <div class="rose-line"></div>
+        <p class="opening-message">Today is all about you.</p>
+        <button id="startButton">BEGIN THE CELEBRATION <span>→</span></button>
+    </div>
+    <div class="bottom-note">Made with ❤️ just for Ammu</div>
+</main>
+<section class="cake-scene" id="cakeScene">
+    <div class="cake-title"><span>MAKE A WISH</span></div>
+    <div class="cake-wrapper">
+        <div class="cake-layer cake-top"><div class="cake-cream"></div><div class="cake-decoration decoration-one"></div><div class="cake-decoration decoration-two"></div><div class="cake-decoration decoration-three"></div></div>
+        <div class="cake-layer cake-middle"><div class="cake-cream"></div><div class="cake-decoration decoration-four"></div><div class="cake-decoration decoration-five"></div><div class="cake-decoration decoration-six"></div></div>
+        <div class="cake-layer cake-bottom"><div class="cake-cream"></div><div class="cake-decoration decoration-seven"></div><div class="cake-decoration decoration-eight"></div><div class="cake-decoration decoration-nine"></div></div>
+        <div class="candles">
+            <button class="candle" data-candle="1"><span class="flame"></span></button>
+            <button class="candle" data-candle="2"><span class="flame"></span></button>
+            <button class="candle" data-candle="3"><span class="flame"></span></button>
         </div>
-
-        <div class="bottom-note">
-            Made with ❤️ just for Ammu
-        </div>
-
-    </main>
-
-
-    <!-- CAKE SCENE -->
-
-    <section class="cake-scene" id="cakeScene">
-
-        <div class="cake-title">
-            <span>MAKE A WISH</span>
-        </div>
-
-        <div class="cake-wrapper">
-
-            <!-- TOP LAYER -->
-
-            <div class="cake-layer cake-top">
-
-                <div class="cake-cream"></div>
-
-                <div class="cake-decoration decoration-one"></div>
-                <div class="cake-decoration decoration-two"></div>
-                <div class="cake-decoration decoration-three"></div>
-
-            </div>
-
-
-            <!-- MIDDLE LAYER -->
-
-            <div class="cake-layer cake-middle">
-
-                <div class="cake-cream"></div>
-
-                <div class="cake-decoration decoration-four"></div>
-                <div class="cake-decoration decoration-five"></div>
-                <div class="cake-decoration decoration-six"></div>
-
-            </div>
-
-
-            <!-- BOTTOM LAYER -->
-
-            <div class="cake-layer cake-bottom">
-
-                <div class="cake-cream"></div>
-
-                <div class="cake-decoration decoration-seven"></div>
-                <div class="cake-decoration decoration-eight"></div>
-                <div class="cake-decoration decoration-nine"></div>
-
-            </div>
-            <!-- CANDLES -->
-
-<div class="candles">
-
-    <button class="candle" data-candle="1">
-        <span class="flame"></span>
-    </button>
-
-    <button class="candle" data-candle="2">
-        <span class="flame"></span>
-    </button>
-
-    <button class="candle" data-candle="3">
-        <span class="flame"></span>
-    </button>
-
-</div>
-
-
-            <!-- PLATE -->
-
-            <div class="cake-plate"></div>
-
-        </div>
-
-        <p class="cake-instruction">
-            Your special day deserves something sweet.
-        </p>
-        <button id="cakeNextButton">
-    CONTINUE
-    <span>→</span>
-</button>
-
-        </section>
-
-<!-- =========================================
-     BALLOON MESSAGE SCENE
-========================================= -->
-
+        <div class="cake-plate"></div>
+    </div>
+    <p class="cake-instruction">Your special day deserves something sweet.</p>
+    <button id="cakeNextButton">CONTINUE <span>→</span></button>
+</section>
 <section class="balloon-scene" id="balloonScene">
-
-    <div class="balloon-heading">
-
-        <span>A FEW WORDS FOR YOU</span>
-
-        <h2>
-            Every balloon holds<br>
-            <em>a little piece of my heart.</em>
-        </h2>
-
-    </div>
-
-
+    <div class="balloon-heading"><span>A FEW WORDS FOR YOU</span><h2>Every balloon holds<br><em>a little piece of my heart.</em></h2></div>
     <div class="balloon-row">
-
-        <div class="message-column">
-            <button class="message-balloon"
-                    data-message="YOU'RE MY STRENGTH">
-                <span>1</span>
-            </button>
-
-            <p class="message-text"></p>
-        </div>
-
-
-        <div class="message-column">
-            <button class="message-balloon"
-                    data-message="YOU'RE MY HAPPINESS">
-                <span>2</span>
-            </button>
-
-            <p class="message-text"></p>
-        </div>
-
-
-        <div class="message-column">
-            <button class="message-balloon"
-                    data-message="YOU'RE MY WEAKNESS">
-                <span>3</span>
-            </button>
-
-            <p class="message-text"></p>
-        </div>
-
-
-        <div class="message-column">
-            <button class="message-balloon"
-                    data-message="YOU'RE MORE THAN A FRIEND">
-                <span>4</span>
-            </button>
-
-            <p class="message-text"></p>
-        </div>
-
-
-        <div class="message-column">
-            <button class="message-balloon"
-                    data-message="I'M BLESSED TO HAVE YOU IN MY LIFE">
-                <span>5</span>
-            </button>
-
-            <p class="message-text"></p>
-        </div>
-
-
-        <div class="message-column">
-            <button class="message-balloon"
-                    data-message="SUCH A PURE HEART YOU HAVE">
-                <span>6</span>
-            </button>
-
-            <p class="message-text"></p>
-        </div>
-
-
-        <div class="message-column">
-            <button class="message-balloon"
-                    data-message="THIS BOND WILL CONTINUE UNTIL MY LAST BREATH">
-                <span>7</span>
-            </button>
-
-            <p class="message-text"></p>
-        </div>
-
+        <div class="message-column"><button class="message-balloon" data-message="YOU'RE MY STRENGTH"><span>1</span></button><p class="message-text"></p></div>
+        <div class="message-column"><button class="message-balloon" data-message="YOU'RE MY HAPPINESS"><span>2</span></button><p class="message-text"></p></div>
+        <div class="message-column"><button class="message-balloon" data-message="YOU'RE MY WEAKNESS"><span>3</span></button><p class="message-text"></p></div>
+        <div class="message-column"><button class="message-balloon" data-message="YOU'RE MORE THAN A FRIEND"><span>4</span></button><p class="message-text"></p></div>
+        <div class="message-column"><button class="message-balloon" data-message="I'M BLESSED TO HAVE YOU IN MY LIFE"><span>5</span></button><p class="message-text"></p></div>
+        <div class="message-column"><button class="message-balloon" data-message="SUCH A PURE HEART YOU HAVE"><span>6</span></button><p class="message-text"></p></div>
+        <div class="message-column"><button class="message-balloon" data-message="THIS BOND WILL CONTINUE UNTIL MY LAST BREATH"><span>7</span></button><p class="message-text"></p></div>
     </div>
-
-
-    <p class="balloon-instruction">
-        Pop each balloon to reveal what's in my heart.
-    </p>
-
+    <p class="balloon-instruction">Pop each balloon to reveal what's in my heart.</p>
 </section>
-<!-- =========================================
-     PHOTO MEMORY SCENE
-========================================= -->
-
 <section class="photo-scene" id="photoScene">
-
-    <div class="photo-heading">
-
-        <span>OUR LITTLE MEMORIES</span>
-
-        <h2>
-            Moments I'll always<br>
-            <em>keep close to my heart.</em>
-        </h2>
-
-    </div>
-
-
+    <div class="photo-heading"><span>OUR LITTLE MEMORIES</span><h2>Moments I'll always<br><em>keep close to my heart.</em></h2></div>
     <div class="photo-stage">
-
-        <div class="memory-photo photo-one">
-            <img src="./images/photo1.jpg" alt="A beautiful memory" loading="eager" decoding="async">
-        </div>
-
-        <div class="memory-photo photo-two">
-            <img src="./images/photo2.jpg" alt="A beautiful memory" loading="eager" decoding="async">
-        </div>
-
-        <div class="memory-photo photo-three">
-            <img src="./images/photo3.jpg" alt="A beautiful memory" loading="eager" decoding="async">
-        </div>
-
-        <div class="memory-photo photo-four">
-            <img src="./images/photo4.jpg" alt="A beautiful memory" loading="eager" decoding="async">
-        </div>
-
-        <div class="memory-photo photo-five">
-            <img src="./images/photo5.jpg" alt="A beautiful memory" loading="eager" decoding="async">
-        </div>
-
+        <div class="memory-photo photo-one"><img src="./images/photo1.jpg" alt="A beautiful memory" loading="eager" decoding="async"></div>
+        <div class="memory-photo photo-two"><img src="./images/photo2.jpg" alt="A beautiful memory" loading="eager" decoding="async"></div>
+        <div class="memory-photo photo-three"><img src="./images/photo3.jpg" alt="A beautiful memory" loading="eager" decoding="async"></div>
+        <div class="memory-photo photo-four"><img src="./images/photo4.jpg" alt="A beautiful memory" loading="eager" decoding="async"></div>
+        <div class="memory-photo photo-five"><img src="./images/photo5.jpg" alt="A beautiful memory" loading="eager" decoding="async"></div>
     </div>
-
-
-    <p class="photo-caption">
-        Some memories deserve to stay forever.
-    </p>
-
-
-    <button id="photoNextButton">
-        OPEN MY LETTER
-        <span>→</span>
-    </button>
-
+    <p class="photo-caption">Some memories deserve to stay forever.</p>
+    <button id="photoNextButton">OPEN MY LETTER <span>→</span></button>
 </section>
-<!-- =========================================
-     LETTER / ENVELOPE SCENE
-========================================= -->
-
 <section class="letter-scene" id="letterScene">
-
-    <div class="letter-heading">
-        <span>ONE LAST THING</span>
-
-        <h2>
-            This one is<br>
-            <em>just for you.</em>
-        </h2>
-    </div>
-
-
+    <div class="letter-heading"><span>ONE LAST THING</span><h2>This one is<br><em>just for you.</em></h2></div>
     <div class="envelope-area">
-
         <button class="envelope" id="envelope">
-
             <div class="envelope-back"></div>
-
-            <div class="letter-paper">
-
-                <div class="letter-content">
-
-                    <p class="letter-small">
-                        DEAR AMMU,
-                    </p>
-
-                    <p>
-                        Happy Birthday to one of the
-                        most special people in my life.
-                    </p>
-
-                    <p>
-                        You have a place in my life
-                        that nobody else can replace.
-                    </p>
-
-                    <p>
-                        Thank you for every smile,
-                        every memory and every moment.
-                    </p>
-
-                    <p>
-                        I hope this new year of your life
-                        brings you everything your heart
-                        deserves.
-                    </p>
-
-                    <p class="letter-final">
-                        Always stay the beautiful person
-                        you are. ❤️
-                    </p>
-
-                    <p class="letter-sign">
-                        — From someone who is lucky
-                        to have you
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="envelope-front"></div>
-
-            <div class="envelope-flap"></div>
-
+            <div class="letter-paper"><div class="letter-content">
+                <p class="letter-small">DEAR AMMU,</p>
+                <p>Happy Birthday to one of the most special people in my life.</p>
+                <p>You have a place in my life that nobody else can replace.</p>
+                <p>Thank you for every smile, every memory and every moment.</p>
+                <p>I hope this new year of your life brings you everything your heart deserves.</p>
+                <p class="letter-final">Always stay the beautiful person you are. ❤️</p>
+                <p class="letter-sign">— From someone who is lucky to have you</p>
+            </div></div>
+            <div class="envelope-front"></div><div class="envelope-flap"></div>
         </button>
-
     </div>
-
-
-    <p class="envelope-instruction">
-        Tap the envelope to open your letter.
-    </p>
-
-
-    <button id="letterNextButton">
-        ONE LAST SURPRISE
-        <span>→</span>
-    </button>
-
+    <p class="envelope-instruction">Tap the envelope to open your letter.</p>
+    <button id="letterNextButton">ONE LAST SURPRISE <span>→</span></button>
 </section>
-<!-- =========================================
-     FINAL FIREWORKS SCENE
-========================================= -->
-
 <section class="final-scene" id="finalScene">
-
     <div class="stars"></div>
-
-    <div class="final-message">
-
-        <span class="final-small">
-            FOR THE MOST SPECIAL PERSON
-        </span>
-
-        <h1>
-            HAPPY BIRTHDAY
-            <strong>AMMU</strong>
-        </h1>
-
-        <div class="heart-world">
-            ❤️ 🌍
-        </div>
-
-        <p>
-            May your smile always be brighter
-            than every firework in the sky.
-        </p>
-
-    </div>
-
-
+    <div class="final-message"><span class="final-small">FOR THE MOST SPECIAL PERSON</span><h1>HAPPY BIRTHDAY <strong>AMMU</strong></h1><div class="heart-world">❤️ 🌍</div><p>May your smile always be brighter than every firework in the sky.</p></div>
     <canvas id="fireworksCanvas" aria-hidden="true"></canvas>
-
 </section>
-
-
-    <script src="script.js"></script>
-
+<script src="script.js"></script>
 </body>
-
 </html>
-
