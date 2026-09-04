@@ -1,0 +1,3956 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050505;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+/* =========================
+   OPENING
+========================= */
+
+.opening-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(244, 161, 181, 0.13),
+            transparent 35%
+        ),
+        #050505;
+
+    transition: opacity 0.9s ease;
+}
+
+.ambient-glow {
+    position: absolute;
+
+    width: 550px;
+    height: 550px;
+
+    border-radius: 50%;
+
+    background: rgba(244, 161, 181, 0.08);
+
+    filter: blur(100px);
+
+    animation: breathe 5s ease-in-out infinite;
+}
+
+.birthday-content {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    animation: entrance 1.5s ease forwards;
+}
+
+.world-symbol {
+    font-size: 45px;
+
+    color: #f4a1b5;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 0 15px rgba(244, 161, 181, 0.7),
+        0 0 40px rgba(244, 161, 181, 0.25);
+
+    animation: float 4s ease-in-out infinite;
+}
+
+.small-text {
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,0.55);
+
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(55px, 9vw, 120px);
+
+    line-height: 0.82;
+
+    letter-spacing: -5px;
+
+    font-weight: 800;
+}
+
+h1 span {
+    color: #f4a1b5;
+}
+
+.name {
+    margin-top: 30px;
+
+    font-size: clamp(25px, 4vw, 50px);
+
+    letter-spacing: 18px;
+
+    padding-left: 18px;
+
+    font-weight: 300;
+}
+
+.rose-line {
+    width: 90px;
+    height: 1px;
+
+    margin: 28px auto;
+
+    background: #f4a1b5;
+
+    box-shadow:
+        0 0 15px rgba(244,161,181,0.8);
+}
+
+.opening-message {
+    margin-bottom: 35px;
+
+    font-size: 15px;
+
+    color: rgba(255,255,255,0.65);
+
+    letter-spacing: 1px;
+}
+
+#startButton {
+    padding: 15px 28px;
+
+    border: 1px solid rgba(244,161,181,0.5);
+
+    border-radius: 100px;
+
+    background: rgba(244,161,181,0.06);
+
+    color: white;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition: 0.35s ease;
+}
+
+#startButton span {
+    margin-left: 12px;
+
+    color: #f4a1b5;
+
+    font-size: 16px;
+}
+
+#startButton:hover {
+    background: #f4a1b5;
+
+    color: #050505;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 35px rgba(244,161,181,0.25);
+}
+
+.bottom-note {
+    position: absolute;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: rgba(255,255,255,0.3);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   CAKE SCENE
+========================= */
+
+.cake-scene {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 50;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(244,161,181,0.10),
+            transparent 38%
+        ),
+        #050505;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+
+/* IMPORTANT:
+   Cake cannot interact or appear
+   until this class is added.
+*/
+
+.cake-scene.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* =========================
+   CAKE TITLE
+========================= */
+
+.cake-title {
+
+    position: absolute;
+
+    top: 12%;
+
+    font-size: 11px;
+
+    letter-spacing: 6px;
+
+    color: rgba(255,255,255,0.55);
+}
+
+.cake-title span {
+
+    color: #f4a1b5;
+
+}
+
+
+/* =========================
+   CAKE
+========================= */
+
+.cake-wrapper {
+
+    position: relative;
+
+    width: 440px;
+
+    height: 430px;
+
+    margin-top: 40px;
+
+    perspective: 900px;
+
+}
+
+
+/* Ground shadow */
+
+.cake-wrapper::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 30px;
+
+    transform: translateX(-50%);
+
+    width: 380px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    background: rgba(0,0,0,0.8);
+
+    filter: blur(15px);
+
+}
+
+
+/* =========================
+   BOTTOM CAKE
+========================= */
+
+.cake-bottom {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 65px;
+
+    transform:
+        translateX(-50%)
+        translateY(-900px);
+
+    width: 360px;
+
+    height: 105px;
+
+    border-radius:
+        18px
+        18px
+        24px
+        24px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #211519,
+            #4a252e 45%,
+            #1b1114
+        );
+
+    border:
+        1px solid rgba(244,161,181,0.45);
+
+    box-shadow:
+        inset 0 -20px 30px rgba(0,0,0,0.55),
+        inset 0 10px 15px rgba(255,255,255,0.04),
+        0 20px 40px rgba(0,0,0,0.7);
+
+    z-index: 3;
+}
+
+
+/* =========================
+   MIDDLE CAKE
+========================= */
+
+.cake-middle {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 158px;
+
+    transform:
+        translateX(-50%)
+        translateY(-900px);
+
+    width: 300px;
+
+    height: 90px;
+
+    border-radius:
+        17px
+        17px
+        20px
+        20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2b181f,
+            #5a303b 45%,
+            #211217
+        );
+
+    border:
+        1px solid rgba(244,161,181,0.45);
+
+    box-shadow:
+        inset 0 -18px 25px rgba(0,0,0,0.55),
+        0 18px 35px rgba(0,0,0,0.6);
+
+    z-index: 4;
+}
+
+
+/* =========================
+   TOP CAKE
+========================= */
+
+.cake-top {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 240px;
+
+    transform:
+        translateX(-50%)
+        translateY(-900px);
+
+    width: 240px;
+
+    height: 78px;
+
+    border-radius:
+        15px
+        15px
+        18px
+        18px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #321c24,
+            #6a3945 45%,
+            #28151c
+        );
+
+    border:
+        1px solid rgba(244,161,181,0.5);
+
+    box-shadow:
+        inset 0 -15px 20px rgba(0,0,0,0.5),
+        0 15px 30px rgba(0,0,0,0.55);
+
+    z-index: 5;
+}
+
+
+/* =========================
+   FROSTING
+========================= */
+
+.cake-bottom::before,
+.cake-middle::before,
+.cake-top::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -13px;
+
+    left: -2px;
+
+    width: calc(100% + 4px);
+
+    height: 25px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            #fff6f8 0%,
+            #f4dce2 55%,
+            #dcaeba 100%
+        );
+
+    box-shadow:
+        0 3px 8px rgba(255,255,255,0.12);
+
+}
+
+
+/* Frosting drips */
+
+.cake-bottom::after,
+.cake-middle::after,
+.cake-top::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 2px;
+
+    left: 8%;
+
+    width: 84%;
+
+    height: 22px;
+
+    border-radius: 0 0 50% 50%;
+
+    background:
+        repeating-radial-gradient(
+            ellipse at top,
+            #f7e8eb 0 10px,
+            transparent 11px 20px
+        );
+
+    opacity: 0.8;
+
+}
+
+
+/* =========================
+   ROSE DECORATIONS
+========================= */
+
+.cake-bottom span,
+.cake-middle span,
+.cake-top span {
+
+    position: absolute;
+
+    width: 12px;
+
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: #f4a1b5;
+
+    box-shadow:
+        0 0 12px rgba(244,161,181,0.7);
+
+}
+
+
+/* =========================
+   PLATE
+========================= */
+
+.cake-plate {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 42px;
+
+    transform: translateX(-50%);
+
+    width: 405px;
+
+    height: 25px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            #393033,
+            #0c0a0b
+        );
+
+    border:
+        1px solid rgba(244,161,181,0.35);
+
+    box-shadow:
+        0 0 30px rgba(244,161,181,0.1);
+
+    z-index: 1;
+}
+
+
+/* =========================
+   INSTRUCTION
+========================= */
+
+.cake-instruction {
+
+    position: absolute;
+
+    bottom: 10%;
+
+    font-size: 13px;
+
+    color: rgba(255,255,255,0.45);
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =========================
+   DROP ANIMATIONS
+========================= */
+
+.cake-scene.active .cake-bottom {
+
+    animation:
+        bottomDrop 1.1s
+        cubic-bezier(.2,.85,.25,1)
+        forwards;
+
+}
+
+
+.cake-scene.active .cake-middle {
+
+    animation:
+        middleDrop 1.1s .55s
+        cubic-bezier(.2,.85,.25,1)
+        forwards;
+
+}
+
+
+.cake-scene.active .cake-top {
+
+    animation:
+        topDrop 1.1s 1s
+        cubic-bezier(.2,.85,.25,1)
+        forwards;
+
+}
+
+
+@keyframes bottomDrop {
+
+    0% {
+        transform:
+            translateX(-50%)
+            translateY(-900px)
+            rotate(-7deg);
+    }
+
+    70% {
+        transform:
+            translateX(-50%)
+            translateY(12px)
+            rotate(2deg);
+    }
+
+    85% {
+        transform:
+            translateX(-50%)
+            translateY(-5px)
+            rotate(-1deg);
+    }
+
+    100% {
+        transform:
+            translateX(-50%)
+            translateY(0)
+            rotate(0);
+    }
+}
+
+
+@keyframes middleDrop {
+
+    0% {
+        transform:
+            translateX(-50%)
+            translateY(-900px)
+            rotate(6deg);
+    }
+
+    70% {
+        transform:
+            translateX(-50%)
+            translateY(10px)
+            rotate(-2deg);
+    }
+
+    85% {
+        transform:
+            translateX(-50%)
+            translateY(-4px)
+            rotate(1deg);
+    }
+
+    100% {
+        transform:
+            translateX(-50%)
+            translateY(0)
+            rotate(0);
+    }
+}
+
+
+@keyframes topDrop {
+
+    0% {
+        transform:
+            translateX(-50%)
+            translateY(-900px)
+            rotate(-6deg);
+    }
+
+    70% {
+        transform:
+            translateX(-50%)
+            translateY(9px)
+            rotate(2deg);
+    }
+
+    85% {
+        transform:
+            translateX(-50%)
+            translateY(-4px)
+            rotate(-1deg);
+    }
+
+    100% {
+        transform:
+            translateX(-50%)
+            translateY(0)
+            rotate(0);
+    }
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes entrance {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes breathe {
+
+    0%, 100% {
+        transform: scale(.9);
+        opacity: .5;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+
+@keyframes float {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .cake-wrapper {
+        transform: scale(.72);
+    }
+
+    .cake-title {
+        top: 10%;
+    }
+
+    .cake-instruction {
+        width: 85%;
+        text-align: center;
+    }
+
+}
+/* =========================================
+   CANDLES
+========================================= */
+
+.candles {
+    position: absolute;
+
+    left: 50%;
+    bottom: 308px;
+
+    transform: translateX(-50%);
+
+    width: 190px;
+    height: 100px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    gap: 28px;
+
+    z-index: 20;
+
+    pointer-events: auto;
+}
+
+
+/* Individual candle */
+
+.candle {
+    position: relative;
+
+    width: 20px;
+    height: 70px;
+
+    border: none;
+
+    border-radius: 6px 6px 3px 3px;
+
+    background:
+        repeating-linear-gradient(
+            120deg,
+            #f8dfe5 0px,
+            #f8dfe5 5px,
+            #d9899f 6px,
+            #d9899f 9px
+        );
+
+    box-shadow:
+        inset 3px 0 5px rgba(255,255,255,0.35),
+        inset -4px 0 6px rgba(0,0,0,0.25),
+        0 8px 15px rgba(0,0,0,0.45);
+
+    cursor: pointer;
+
+    transform:
+        translateY(-700px);
+
+    opacity: 0;
+}
+
+
+/* Candle dropping after cake */
+
+.cake-scene.active .candle:nth-child(1) {
+
+    animation:
+        candleDrop 0.8s 2.2s cubic-bezier(.2,.85,.25,1)
+        forwards;
+
+}
+
+
+.cake-scene.active .candle:nth-child(2) {
+
+    animation:
+        candleDrop 0.8s 2.45s cubic-bezier(.2,.85,.25,1)
+        forwards;
+
+}
+
+
+.cake-scene.active .candle:nth-child(3) {
+
+    animation:
+        candleDrop 0.8s 2.7s cubic-bezier(.2,.85,.25,1)
+        forwards;
+
+}
+
+
+/* Wick */
+
+.candle::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -8px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 3px;
+
+    height: 10px;
+
+    background: #171717;
+
+    border-radius: 3px;
+
+}
+
+
+/* Flame */
+
+.flame {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: -35px;
+
+    transform:
+        translateX(-50%)
+        scale(0);
+
+    width: 18px;
+    height: 27px;
+
+    border-radius:
+        50% 50% 50% 50%;
+
+    background:
+        radial-gradient(
+            circle at 50% 65%,
+            #ffffff 0%,
+            #ffe8a8 25%,
+            #f4a1b5 55%,
+            transparent 70%
+        );
+
+    filter:
+        drop-shadow(
+            0 0 10px #f4a1b5
+        );
+
+    opacity: 0;
+
+}
+
+
+/* Flame ON */
+
+.candle.lit .flame {
+
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        scale(1);
+
+    animation:
+        flameFlicker 0.7s ease-in-out infinite alternate;
+
+}
+
+
+/* Candle hover */
+
+.candle:hover {
+
+    filter:
+        brightness(1.15);
+
+}
+
+
+/* Candle drop animation */
+
+@keyframes candleDrop {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(-700px)
+            rotate(-8deg);
+
+    }
+
+    70% {
+
+        opacity: 1;
+
+        transform:
+            translateY(10px)
+            rotate(3deg);
+
+    }
+
+    85% {
+
+        transform:
+            translateY(-4px)
+            rotate(-1deg);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            rotate(0);
+
+    }
+
+}
+
+
+/* Flame movement */
+
+@keyframes flameFlicker {
+
+    0% {
+
+        transform:
+            translateX(-50%)
+            scale(1)
+            rotate(-3deg);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(-50%)
+            scale(1.12)
+            rotate(3deg);
+
+    }
+
+}
+/* =========================================
+   BRIGHT CANDLE FLAME
+========================================= */
+
+.candle.lit .flame {
+
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        scale(1);
+
+    background:
+        radial-gradient(
+            ellipse at center bottom,
+            #ffffff 0%,
+            #fff4c2 20%,
+            #ffd27a 40%,
+            #f4a1b5 65%,
+            transparent 75%
+        );
+
+    box-shadow:
+        0 0 8px #ffffff,
+        0 0 18px #ffd27a,
+        0 0 35px #f4a1b5,
+        0 0 60px rgba(244,161,181,0.45);
+
+    filter:
+        blur(0.3px)
+        drop-shadow(0 0 12px rgba(255,210,122,0.9));
+
+    animation:
+        flameFlicker 0.45s ease-in-out infinite alternate;
+
+}
+/* Candle light illuminating the cake */
+
+.cake-scene:has(.candle.lit) .cake-top,
+.cake-scene:has(.candle.lit) .cake-middle,
+.cake-scene:has(.candle.lit) .cake-bottom {
+
+    box-shadow:
+        inset 0 -20px 30px rgba(0,0,0,0.45),
+        0 0 20px rgba(244,161,181,0.12),
+        0 0 45px rgba(244,161,181,0.08);
+
+}
+/* =========================================
+   CAKE NEXT BUTTON
+========================================= */
+
+#cakeNextButton {
+
+    position: absolute;
+
+    bottom: 5%;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    padding: 14px 28px;
+
+    border-radius: 100px;
+
+    border: 1px solid rgba(244,161,181,0.55);
+
+    background: rgba(244,161,181,0.08);
+
+    color: white;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease,
+        background .3s ease;
+
+}
+
+
+#cakeNextButton span {
+
+    margin-left: 12px;
+
+    color: #f4a1b5;
+
+    font-size: 16px;
+
+}
+
+
+#cakeNextButton.visible {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+
+    animation:
+        nextPulse 2s ease-in-out infinite;
+
+}
+
+
+#cakeNextButton:hover {
+
+    background: #f4a1b5;
+
+    color: #050505;
+
+    box-shadow:
+        0 10px 35px rgba(244,161,181,0.3);
+
+}
+
+
+#cakeNextButton:hover span {
+
+    color: #050505;
+
+}
+
+
+@keyframes nextPulse {
+
+    0%, 100% {
+        box-shadow:
+            0 0 0 rgba(244,161,181,0);
+    }
+
+    50% {
+        box-shadow:
+            0 0 25px rgba(244,161,181,0.18);
+    }
+
+}
+/* =========================================
+   FINAL CANDLE FIX
+========================================= */
+
+.candles {
+    pointer-events: auto !important;
+    z-index: 100 !important;
+}
+
+.candle {
+    pointer-events: auto !important;
+    cursor: pointer;
+}
+
+.candle .flame {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+}
+
+.candle.lit .flame {
+    opacity: 1 !important;
+
+    transform:
+        translateX(-50%)
+        scale(1) !important;
+
+    background:
+        radial-gradient(
+            ellipse at center bottom,
+            #ffffff 0%,
+            #fff4c2 22%,
+            #ffd27a 42%,
+            #f4a1b5 65%,
+            transparent 75%
+        ) !important;
+
+    box-shadow:
+        0 0 8px #ffffff,
+        0 0 18px #ffd27a,
+        0 0 35px #f4a1b5,
+        0 0 60px rgba(244,161,181,0.45) !important;
+
+    filter:
+        drop-shadow(0 0 12px rgba(255,210,122,0.9));
+
+    animation:
+        flameFlicker 0.45s ease-in-out infinite alternate;
+}
+
+
+/* =========================================
+   FINAL NEXT BUTTON FIX
+========================================= */
+
+#cakeNextButton {
+    position: absolute !important;
+
+    left: 50% !important;
+    bottom: 5% !important;
+
+    transform:
+        translateX(-50%)
+        translateY(20px) !important;
+
+    z-index: 200 !important;
+
+    opacity: 0 !important;
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+
+    padding: 14px 28px;
+
+    border-radius: 100px;
+
+    border: 1px solid rgba(244,161,181,0.55);
+
+    background: rgba(244,161,181,0.08);
+
+    color: white;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease,
+        background .3s ease;
+}
+
+#cakeNextButton.visible {
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+
+    transform:
+        translateX(-50%)
+        translateY(0) !important;
+
+    box-shadow:
+        0 0 25px rgba(244,161,181,0.18);
+
+    animation:
+        nextPulse 2s ease-in-out infinite;
+}
+
+#cakeNextButton span {
+    margin-left: 12px;
+    color: #f4a1b5;
+    font-size: 16px;
+}
+
+@keyframes nextPulse {
+
+    0%, 100% {
+        box-shadow:
+            0 0 5px rgba(244,161,181,0.08);
+    }
+
+    50% {
+        box-shadow:
+            0 0 30px rgba(244,161,181,0.25);
+    }
+}
+/* =========================================
+   BALLOON MESSAGE SCENE
+========================================= */
+
+.balloon-scene {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 300;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(244,161,181,0.10),
+            transparent 35%
+        ),
+        #050505;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+
+    overflow: hidden;
+
+}
+
+
+.balloon-scene.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.balloon-heading {
+
+    position: absolute;
+
+    top: 9%;
+
+    text-align: center;
+
+}
+
+
+.balloon-heading span {
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #f4a1b5;
+
+}
+
+
+.balloon-heading h2 {
+
+    margin-top: 12px;
+
+    font-size: clamp(24px, 3vw, 40px);
+
+    font-weight: 300;
+
+    line-height: 1.2;
+
+}
+
+
+.balloon-heading em {
+
+    color: #f4a1b5;
+
+    font-style: normal;
+
+}
+
+
+/* =========================================
+   7 COLUMN ROW
+========================================= */
+
+.balloon-row {
+
+    width: 94%;
+
+    max-width: 1500px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 15px;
+
+    align-items: start;
+
+    margin-top: 70px;
+
+}
+
+
+/* Each column */
+
+.message-column {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    min-width: 0;
+
+}
+
+
+/* =========================================
+   BALLOON
+========================================= */
+
+.message-balloon {
+
+    position: relative;
+
+    width: 105px;
+
+    height: 130px;
+
+    border: none;
+
+    border-radius:
+        50%
+        50%
+        48%
+        48%;
+
+    background:
+        radial-gradient(
+            circle at 32% 25%,
+            rgba(255,255,255,0.75),
+            transparent 10%
+        ),
+        radial-gradient(
+            circle at 50% 60%,
+            #f4a1b5,
+            #b85f78 65%,
+            #54242f
+        );
+
+    box-shadow:
+
+        inset -12px -15px 25px rgba(0,0,0,0.28),
+
+        inset 8px 8px 20px rgba(255,255,255,0.18),
+
+        0 15px 35px rgba(244,161,181,0.15);
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        filter .3s ease;
+
+    animation:
+        balloonFloat 3s ease-in-out infinite;
+
+}
+
+
+/* Balloon knot */
+
+.message-balloon::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: -10px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 14px;
+
+    height: 14px;
+
+    background: #a54e68;
+
+    clip-path: polygon(
+        50% 100%,
+        0 0,
+        100% 0
+    );
+
+}
+
+
+/* Balloon string */
+
+.message-balloon::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 100%;
+
+    left: 50%;
+
+    width: 1px;
+
+    height: 75px;
+
+    background:
+        linear-gradient(
+            #a54e68,
+            transparent
+        );
+
+}
+
+
+/* Number */
+
+.message-balloon span {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 17px;
+
+    color: rgba(255,255,255,0.9);
+
+    font-weight: 300;
+
+}
+
+
+/* Hover */
+
+.message-balloon:hover {
+
+    transform:
+        translateY(-10px)
+        scale(1.05);
+
+    filter: brightness(1.15);
+
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.message-text {
+
+    width: 130px;
+
+    min-height: 55px;
+
+    margin-top: 70px;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    letter-spacing: 1px;
+
+    color: white;
+
+    opacity: 0;
+
+    transform: translateY(15px);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+
+}
+
+
+/* Message revealed */
+
+.message-column.revealed .message-text {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* =========================================
+   POP ANIMATION
+========================================= */
+
+.message-column.popped .message-balloon {
+
+    animation:
+        balloonPop .45s ease forwards;
+
+}
+
+
+@keyframes balloonPop {
+
+    0% {
+
+        transform: scale(1);
+
+        opacity: 1;
+
+    }
+
+    40% {
+
+        transform: scale(1.25);
+
+    }
+
+    100% {
+
+        transform: scale(0);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================
+   FLOATING
+========================================= */
+
+.message-column:nth-child(1) .message-balloon {
+    animation-delay: 0s;
+}
+
+.message-column:nth-child(2) .message-balloon {
+    animation-delay: .3s;
+}
+
+.message-column:nth-child(3) .message-balloon {
+    animation-delay: .6s;
+}
+
+.message-column:nth-child(4) .message-balloon {
+    animation-delay: .9s;
+}
+
+.message-column:nth-child(5) .message-balloon {
+    animation-delay: 1.2s;
+}
+
+.message-column:nth-child(6) .message-balloon {
+    animation-delay: 1.5s;
+}
+
+.message-column:nth-child(7) .message-balloon {
+    animation-delay: 1.8s;
+}
+
+
+@keyframes balloonFloat {
+
+    0%, 100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-12px);
+
+    }
+
+}
+
+
+/* =========================================
+   INSTRUCTION
+========================================= */
+
+.balloon-instruction {
+
+    position: absolute;
+
+    bottom: 7%;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: rgba(255,255,255,0.35);
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .balloon-row {
+
+        overflow-x: auto;
+
+        justify-content: flex-start;
+
+        grid-template-columns:
+            repeat(7, 120px);
+
+        width: 92%;
+
+        padding-bottom: 30px;
+
+    }
+
+    .balloon-heading {
+
+        top: 6%;
+
+    }
+
+    .message-balloon {
+
+        width: 90px;
+
+        height: 112px;
+
+    }
+
+}
+/* =========================================
+   BALLOON SCENE — FINAL FIX
+========================================= */
+
+.balloon-scene {
+    position: fixed !important;
+
+    inset: 0 !important;
+
+    z-index: 1000 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(244, 161, 181, 0.12),
+            transparent 38%
+        ),
+        #050505 !important;
+
+    opacity: 0 !important;
+
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+}
+
+
+.balloon-scene.active {
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+}
+
+
+/* Heading */
+
+.balloon-heading {
+    position: absolute;
+
+    top: 9%;
+
+    left: 0;
+
+    width: 100%;
+
+    text-align: center;
+
+    z-index: 5;
+}
+
+
+.balloon-heading span {
+    color: #f4a1b5;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.balloon-heading h2 {
+    margin-top: 12px;
+
+    color: white;
+
+    font-size: 32px;
+
+    font-weight: 300;
+
+    line-height: 1.2;
+}
+
+
+.balloon-heading em {
+    color: #f4a1b5;
+
+    font-style: normal;
+}
+
+
+/* =========================================
+   7 COLUMNS
+========================================= */
+
+.balloon-row {
+    position: relative;
+
+    z-index: 10;
+
+    width: 96%;
+
+    max-width: 1500px;
+
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(7, 1fr) !important;
+
+    gap: 12px;
+
+    align-items: start;
+
+    justify-items: center;
+
+    margin-top: 60px;
+}
+
+
+/* Column */
+
+.message-column {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* =========================================
+   BALLOON
+========================================= */
+
+.message-balloon {
+    position: relative;
+
+    width: 105px !important;
+
+    height: 130px !important;
+
+    border: none;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            rgba(255,255,255,.8),
+            transparent 10%
+        ),
+        radial-gradient(
+            circle at 50% 60%,
+            #f4a1b5,
+            #b85f78 65%,
+            #54242f
+        );
+
+    box-shadow:
+        inset -12px -15px 25px rgba(0,0,0,.25),
+        inset 8px 8px 20px rgba(255,255,255,.18),
+        0 15px 35px rgba(244,161,181,.2);
+
+    animation:
+        balloonFloat 3s ease-in-out infinite;
+
+    transition: .3s ease;
+}
+
+
+.message-balloon:hover {
+    transform: scale(1.08) translateY(-8px);
+
+    filter: brightness(1.15);
+}
+
+
+/* Number */
+
+.message-balloon span {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: 300;
+}
+
+
+/* String */
+
+.message-balloon::before {
+    content: "";
+
+    position: absolute;
+
+    top: 100%;
+
+    left: 50%;
+
+    width: 1px;
+
+    height: 65px;
+
+    background: linear-gradient(
+        #b85f78,
+        transparent
+    );
+}
+
+
+/* Knot */
+
+.message-balloon::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: -8px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 13px;
+
+    height: 13px;
+
+    background: #a54e68;
+
+    clip-path: polygon(
+        50% 100%,
+        0 0,
+        100% 0
+    );
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.message-text {
+    width: 135px;
+
+    margin-top: 70px;
+
+    min-height: 55px;
+
+    text-align: center;
+
+    color: white;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    letter-spacing: 1px;
+
+    opacity: 0;
+
+    transform: translateY(15px);
+
+    transition: .6s ease;
+}
+
+
+.message-column.revealed .message-text {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   POP
+========================================= */
+
+.message-column.popped .message-balloon {
+    animation:
+        balloonPop .45s ease forwards;
+}
+
+
+@keyframes balloonPop {
+
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    40% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+}
+
+
+@keyframes balloonFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
+
+/* Instruction */
+
+.balloon-instruction {
+    position: absolute;
+
+    bottom: 7%;
+
+    color: rgba(255,255,255,.35);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+/* Mobile */
+
+@media (max-width: 900px) {
+
+    .balloon-row {
+        overflow-x: auto;
+
+        justify-content: start;
+
+        grid-template-columns:
+            repeat(7, 130px) !important;
+
+        width: 94%;
+
+        padding-bottom: 30px;
+    }
+
+}
+/* ============================================
+   BALLOON SCENE - STABLE VERSION
+============================================ */
+
+.balloon-scene {
+    position: fixed !important;
+
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    z-index: 5000 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    flex-direction: column !important;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(244, 161, 181, 0.12),
+            transparent 40%
+        ),
+        #050505 !important;
+
+    opacity: 0 !important;
+
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+}
+
+
+/*
+   When active, KEEP IT VISIBLE.
+*/
+
+.balloon-scene.active {
+    display: flex !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+
+    z-index: 5000 !important;
+}
+
+
+/*
+   Make sure nothing accidentally
+   hides the balloon row.
+*/
+
+.balloon-scene .balloon-row {
+    display: grid !important;
+
+    visibility: visible !important;
+
+    opacity: 1 !important;
+
+    z-index: 5001 !important;
+}
+
+
+/*
+   Keep balloons on screen.
+*/
+
+.balloon-scene .message-balloon {
+    visibility: visible !important;
+
+    opacity: 1;
+
+    z-index: 5002 !important;
+}
+
+
+/*
+   Only the POPPED balloon disappears.
+*/
+
+.balloon-scene
+.message-column.popped
+.message-balloon {
+
+    visibility: hidden !important;
+
+}
+/* =========================================
+   PHOTO MEMORY SCENE
+========================================= */
+
+.photo-scene {
+
+    position: fixed !important;
+
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    z-index: 6000 !important;
+
+    display: flex !important;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(244,161,181,0.12),
+            transparent 40%
+        ),
+        #050505;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    transition:
+        opacity 1s ease;
+}
+
+
+.photo-scene.active {
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.photo-heading {
+
+    position: absolute;
+
+    top: 7%;
+
+    width: 100%;
+
+    text-align: center;
+
+}
+
+
+.photo-heading span {
+
+    color: #f4a1b5;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+}
+
+
+.photo-heading h2 {
+
+    margin-top: 12px;
+
+    color: white;
+
+    font-size: clamp(25px, 3vw, 40px);
+
+    font-weight: 300;
+
+    line-height: 1.2;
+
+}
+
+
+.photo-heading em {
+
+    color: #f4a1b5;
+
+    font-style: normal;
+
+}
+
+
+/* =========================================
+   PHOTO STAGE
+========================================= */
+
+.photo-stage {
+
+    position: relative;
+
+    width: 800px;
+
+    max-width: 90vw;
+
+    height: 500px;
+
+    margin-top: 55px;
+
+}
+
+
+/* =========================================
+   PHOTO CARD
+========================================= */
+
+.memory-photo {
+
+    position: absolute;
+
+    width: 230px;
+
+    height: 300px;
+
+    padding: 8px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.55),
+        0 0 30px rgba(244,161,181,0.08);
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.6)
+        rotate(0deg);
+
+    transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(.2,.8,.2,1);
+
+}
+
+
+.memory-photo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+}
+
+
+/* =========================================
+   PHOTO POSITIONS
+========================================= */
+
+.photo-one {
+
+    left: 50%;
+
+    top: 50%;
+
+    z-index: 5;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-4deg)
+        scale(1);
+
+}
+
+
+.photo-two {
+
+    left: 24%;
+
+    top: 45%;
+
+    z-index: 4;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-10deg)
+        scale(.88);
+
+}
+
+
+.photo-three {
+
+    left: 76%;
+
+    top: 45%;
+
+    z-index: 4;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(9deg)
+        scale(.88);
+
+}
+
+
+.photo-four {
+
+    left: 31%;
+
+    top: 68%;
+
+    z-index: 3;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(6deg)
+        scale(.72);
+
+}
+
+
+.photo-five {
+
+    left: 69%;
+
+    top: 68%;
+
+    z-index: 3;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-7deg)
+        scale(.72);
+
+}
+
+
+/* =========================================
+   REVEAL ANIMATION
+========================================= */
+
+.photo-scene.active .memory-photo {
+
+    opacity: 1;
+
+}
+
+
+.photo-scene.active .photo-one {
+
+    animation:
+        photoCenter 1.2s .2s both;
+
+}
+
+
+.photo-scene.active .photo-two {
+
+    animation:
+        photoLeft 1.1s .8s both;
+
+}
+
+
+.photo-scene.active .photo-three {
+
+    animation:
+        photoRight 1.1s 1.3s both;
+
+}
+
+
+.photo-scene.active .photo-four {
+
+    animation:
+        photoBottomLeft 1s 1.8s both;
+
+}
+
+
+.photo-scene.active .photo-five {
+
+    animation:
+        photoBottomRight 1s 2.2s both;
+
+}
+
+
+@keyframes photoCenter {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.5)
+            rotate(0deg);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1)
+            rotate(-4deg);
+
+    }
+
+}
+
+
+@keyframes photoLeft {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            translateX(150px)
+            scale(.5)
+            rotate(0deg);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            translateX(0)
+            scale(.88)
+            rotate(-10deg);
+
+    }
+
+}
+
+
+@keyframes photoRight {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            translateX(-150px)
+            scale(.5)
+            rotate(0deg);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            translateX(0)
+            scale(.88)
+            rotate(9deg);
+
+    }
+
+}
+
+
+@keyframes photoBottomLeft {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            translateY(-100px)
+            scale(.5)
+            rotate(0deg);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            translateY(0)
+            scale(.72)
+            rotate(6deg);
+
+    }
+
+}
+
+
+@keyframes photoBottomRight {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            translateY(-100px)
+            scale(.5)
+            rotate(0deg);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            translateY(0)
+            scale(.72)
+            rotate(-7deg);
+
+    }
+
+}
+
+
+/* =========================================
+   CAPTION
+========================================= */
+
+.photo-caption {
+
+    position: absolute;
+
+    bottom: 10%;
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================
+   LETTER BUTTON
+========================================= */
+
+#photoNextButton {
+
+    position: absolute;
+
+    bottom: 4%;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    padding: 13px 25px;
+
+    border-radius: 100px;
+
+    border: 1px solid rgba(244,161,181,.45);
+
+    background: rgba(244,161,181,.08);
+
+    color: white;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition: .5s ease;
+
+}
+
+
+.photo-scene.active #photoNextButton {
+
+    animation:
+        showLetterButton .8s 4s forwards;
+
+}
+
+
+@keyframes showLetterButton {
+
+    to {
+
+        opacity: 1;
+
+        visibility: visible;
+
+        pointer-events: auto;
+
+        transform:
+            translateX(-50%)
+            translateY(0);
+
+    }
+
+}
+
+
+#photoNextButton span {
+
+    margin-left: 10px;
+
+    color: #f4a1b5;
+
+}
+
+/* =========================================
+   PHOTO LIGHTBOX
+========================================= */
+
+body.lightbox-open {
+    overflow: hidden;
+}
+
+.memory-photo {
+    cursor: zoom-in;
+}
+
+.memory-photo:focus-visible {
+    outline: 2px solid #f4a1b5;
+    outline-offset: 8px;
+}
+
+.photo-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6vh 8vw;
+    background: rgba(5, 5, 5, .94);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .35s ease, visibility .35s ease;
+}
+
+.photo-lightbox.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.lightbox-figure {
+    position: relative;
+    max-width: min(78vw, 720px);
+    max-height: 88vh;
+    margin: 0;
+    padding: 10px 10px 44px;
+    background: #fff;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .65), 0 0 40px rgba(244, 161, 181, .18);
+    transform: scale(.88) rotate(-2deg);
+    transition: transform .45s cubic-bezier(.2, .8, .2, 1);
+}
+
+.photo-lightbox.open .lightbox-figure {
+    transform: scale(1) rotate(0deg);
+}
+
+.lightbox-image {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: min(76vw, 700px);
+    max-height: calc(88vh - 54px);
+    object-fit: contain;
+}
+
+.lightbox-caption {
+    position: absolute;
+    right: 0;
+    bottom: 13px;
+    left: 0;
+    color: #4d3940;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.lightbox-close,
+.lightbox-arrow {
+    position: absolute;
+    z-index: 1;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border: 1px solid rgba(244, 161, 181, .5);
+    border-radius: 50%;
+    background: rgba(244, 161, 181, .1);
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-arrow:hover {
+    background: rgba(244, 161, 181, .28);
+    transform: scale(1.08);
+}
+
+.lightbox-close:focus-visible,
+.lightbox-arrow:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
+}
+
+.lightbox-close {
+    top: 28px;
+    right: 30px;
+    font-size: 28px;
+    font-weight: 200;
+}
+
+.lightbox-previous {
+    left: 3vw;
+}
+
+.lightbox-next {
+    right: 3vw;
+}
+
+@media (max-width: 600px) {
+    .photo-lightbox {
+        padding: 8vh 14vw;
+    }
+
+    .lightbox-figure {
+        max-width: 78vw;
+    }
+
+    .lightbox-image {
+        max-width: calc(78vw - 20px);
+        max-height: 72vh;
+    }
+
+    .lightbox-close {
+        top: 18px;
+        right: 18px;
+    }
+
+    .lightbox-previous {
+        left: 4vw;
+    }
+
+    .lightbox-next {
+        right: 4vw;
+    }
+}
+/* =========================================
+   LETTER / ENVELOPE SCENE
+========================================= */
+
+.letter-scene {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+
+    height: 100vh;
+
+    z-index: 7000;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(244,161,181,0.12),
+            transparent 40%
+        ),
+        #050505;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    transition:
+        opacity 1s ease;
+}
+
+
+.letter-scene.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.letter-heading {
+
+    position: absolute;
+
+    top: 8%;
+
+    text-align: center;
+
+}
+
+
+.letter-heading span {
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #f4a1b5;
+
+}
+
+
+.letter-heading h2 {
+
+    margin-top: 12px;
+
+    color: white;
+
+    font-size: 32px;
+
+    font-weight: 300;
+
+    line-height: 1.2;
+
+}
+
+
+.letter-heading em {
+
+    color: #f4a1b5;
+
+    font-style: normal;
+
+}
+
+
+/* =========================================
+   ENVELOPE AREA
+========================================= */
+
+.envelope-area {
+
+    position: relative;
+
+    width: 500px;
+
+    height: 400px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    perspective: 1000px;
+
+}
+
+
+/* =========================================
+   ENVELOPE
+========================================= */
+
+.envelope {
+
+    position: relative;
+
+    width: 360px;
+
+    height: 230px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transform:
+        translateY(-700px);
+
+    animation:
+        envelopeDrop 1.6s
+        cubic-bezier(.18,.85,.25,1)
+        forwards;
+
+}
+
+
+/* Envelope back */
+
+.envelope-back {
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #3a252b,
+            #171013
+        );
+
+    border:
+        1px solid rgba(244,161,181,0.45);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.7),
+        0 0 35px rgba(244,161,181,.08);
+
+}
+
+
+/* =========================================
+   LETTER PAPER
+========================================= */
+
+.letter-paper {
+
+    position: absolute;
+
+    left: 30px;
+
+    bottom: 15px;
+
+    width: 300px;
+
+    height: 205px;
+
+    padding: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #f7edf0
+        );
+
+    color: #24171b;
+
+    border-radius: 3px;
+
+    transform:
+        translateY(90px);
+
+    transition:
+        transform 1s
+        cubic-bezier(.2,.8,.2,1);
+
+    z-index: 2;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================
+   ENVELOPE FRONT
+========================================= */
+
+.envelope-front {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 4;
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 50%,
+            #24171b 50%
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 55%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+
+    border-radius: 8px;
+
+}
+
+
+/* =========================================
+   FLAP
+========================================= */
+
+.envelope-flap {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 125px;
+
+    z-index: 5;
+
+    background:
+        linear-gradient(
+            145deg,
+            #503039,
+            #24171b
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+    transform-origin: top center;
+
+    transition:
+        transform .9s
+        cubic-bezier(.2,.8,.2,1);
+
+}
+
+
+/* =========================================
+   LETTER CONTENT
+========================================= */
+
+.letter-content {
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+    transition:
+        opacity .7s .5s ease,
+        transform .7s .5s ease;
+
+}
+
+
+.letter-small {
+
+    color: #b85f78;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 12px;
+
+}
+
+
+.letter-content p {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 10px;
+
+    line-height: 1.45;
+
+    margin-bottom: 8px;
+
+}
+
+
+.letter-final {
+
+    color: #8f4057;
+
+}
+
+
+.letter-sign {
+
+    margin-top: 12px;
+
+    font-style: italic;
+
+    text-align: right;
+
+}
+
+
+/* =========================================
+   OPEN STATE
+========================================= */
+
+.envelope.opened .envelope-flap {
+
+    transform:
+        rotateX(180deg);
+
+}
+
+
+.envelope.opened .letter-paper {
+
+    z-index: 6;
+
+    transform:
+        translateY(-105px);
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.35),
+        0 0 18px rgba(244,161,181,.12);
+
+}
+
+
+.envelope.opened .letter-content {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================================
+   INSTRUCTION
+========================================= */
+
+.envelope-instruction {
+
+    position: absolute;
+
+    bottom: 8%;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================
+   FINAL BUTTON
+========================================= */
+
+#letterNextButton {
+
+    position: absolute;
+
+    bottom: 3%;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    padding: 13px 25px;
+
+    border-radius: 100px;
+
+    border:
+        1px solid
+        rgba(244,161,181,.5);
+
+    background:
+        rgba(244,161,181,.08);
+
+    color: white;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+}
+
+
+.letter-scene.opened .envelope-instruction {
+
+    opacity: 0;
+
+}
+
+
+.letter-scene.opened #letterNextButton {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+
+    transition:
+        .7s ease;
+
+}
+
+
+#letterNextButton span {
+
+    margin-left: 10px;
+
+    color: #f4a1b5;
+
+}
+
+
+@keyframes envelopeDrop {
+
+    0% {
+
+        transform:
+            translateY(-700px)
+            rotate(-8deg);
+
+        opacity: 0;
+
+    }
+
+    70% {
+
+        transform:
+            translateY(15px)
+            rotate(2deg);
+
+        opacity: 1;
+
+    }
+
+    85% {
+
+        transform:
+            translateY(-5px)
+            rotate(-1deg);
+
+    }
+
+    100% {
+
+        transform:
+            translateY(0)
+            rotate(0);
+
+        opacity: 1;
+
+    }
+
+}
+/* =========================================
+   FINAL FIREWORKS SCENE
+========================================= */
+
+.final-scene {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 9000;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(244,161,181,0.10),
+            transparent 35%
+        ),
+        #020202;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 1.5s ease;
+}
+
+
+.final-scene.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+}
+
+
+/* =========================================
+   FINAL TEXT
+========================================= */
+
+.final-message {
+
+    position: relative;
+
+    z-index: 20;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateY(20px)
+        scale(.95);
+
+}
+
+
+.final-scene.active .final-message {
+
+    animation:
+        finalTextReveal 2s
+        1.5s
+        forwards;
+
+}
+
+
+.final-small {
+
+    display: block;
+
+    color: #f4a1b5;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.final-message h1 {
+
+    margin: 0;
+
+    color: white;
+
+    font-size:
+        clamp(38px, 7vw, 90px);
+
+    font-weight: 200;
+
+    letter-spacing: 8px;
+
+    line-height: 1;
+
+}
+
+
+.final-message h1 strong {
+
+    display: block;
+
+    color: #f4a1b5;
+
+    font-weight: 500;
+
+    letter-spacing: 12px;
+
+    text-shadow:
+        0 0 20px rgba(244,161,181,.25),
+        0 0 50px rgba(244,161,181,.12);
+
+}
+
+
+.heart-world {
+
+    margin-top: 25px;
+
+    font-size: 28px;
+
+    opacity: .95;
+
+}
+
+
+.final-message p {
+
+    max-width: 500px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.6);
+
+    font-family: Georgia, serif;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+@keyframes finalTextReveal {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(.94);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================
+   FIREWORK
+========================================= */
+
+#fireworksCanvas {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    display: block;
+
+    mix-blend-mode: screen;
+
+}
+
+
+/* =========================================
+   FINAL SCREEN GLOW
+========================================= */
+
+.final-scene::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(244,161,181,.08),
+            transparent 45%
+        );
+
+    pointer-events: none;
+
+    animation:
+        finalGlow 3s
+        ease-in-out
+        infinite alternate;
+
+}
+
+
+@keyframes finalGlow {
+
+    from {
+
+        opacity: .4;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    body {
+        min-width: 320px;
+    }
+
+    .birthday-content {
+        width: min(92vw, 420px);
+    }
+
+    h1 {
+        font-size: clamp(48px, 16vw, 76px);
+        letter-spacing: -3px;
+    }
+
+    .name {
+        margin-top: 22px;
+        font-size: clamp(24px, 9vw, 38px);
+        letter-spacing: 10px;
+        padding-left: 10px;
+    }
+
+    .opening-message {
+        font-size: 14px;
+    }
+
+    #startButton,
+    #cakeNextButton,
+    #photoNextButton,
+    #letterNextButton {
+        min-height: 48px;
+        padding: 13px 20px;
+    }
+
+    .cake-wrapper {
+        transform: scale(.58);
+        margin-top: 5px;
+    }
+
+    .cake-title {
+        top: 8%;
+        font-size: 10px;
+        letter-spacing: 4px;
+    }
+
+    .cake-instruction {
+        position: absolute;
+        bottom: 13%;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .balloon-heading {
+        top: 8%;
+        width: 92%;
+        text-align: center;
+    }
+
+    .balloon-heading h2 {
+        font-size: clamp(27px, 8vw, 38px);
+        line-height: 1.1;
+    }
+
+    .balloon-row {
+        width: 94%;
+        margin-top: 20px;
+        gap: 18px;
+    }
+
+    .balloon-instruction {
+        bottom: 5%;
+        width: 90%;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .photo-heading,
+    .letter-heading {
+        width: 92%;
+        text-align: center;
+    }
+
+    .photo-heading h2,
+    .letter-heading h2 {
+        font-size: clamp(29px, 9vw, 44px);
+        line-height: 1.08;
+    }
+
+    .photo-stage {
+        width: min(94vw, 360px);
+        height: 455px;
+        margin-top: 62px;
+        transform: none;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-content: center;
+        gap: 12px;
+    }
+
+    .memory-photo {
+        position: relative;
+        left: auto !important;
+        top: auto !important;
+        width: 100%;
+        height: 142px;
+        padding: 5px;
+        z-index: 6;
+        overflow: hidden;
+        opacity: 1 !important;
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .memory-photo img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        min-width: 0;
+        min-height: 0;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .photo-scene.active .memory-photo {
+        opacity: 1 !important;
+        animation: none !important;
+    }
+
+    .photo-one {
+        grid-column: 1;
+    }
+
+    .photo-two {
+        grid-column: 2;
+    }
+
+    .photo-three {
+        grid-column: 1;
+    }
+
+    .photo-four {
+        grid-column: 2;
+    }
+
+    .photo-five {
+        grid-column: 1 / -1;
+        width: 132px;
+        justify-self: center;
+    }
+
+    .photo-caption,
+    .envelope-instruction {
+        width: 90%;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .envelope-area {
+        transform: scale(.72);
+    }
+
+    .final-message {
+        width: 92vw;
+        padding: 24px 12px;
+    }
+
+    .final-small {
+        font-size: 8px;
+        letter-spacing: 3px;
+        margin-bottom: 14px;
+    }
+
+    .final-message h1 {
+        font-size: clamp(31px, 10vw, 52px);
+        letter-spacing: 4px;
+    }
+
+    .final-message h1 strong {
+        letter-spacing: 7px;
+    }
+
+    .heart-world {
+        margin-top: 18px;
+        font-size: 24px;
+    }
+
+    .final-message p {
+        max-width: 290px;
+        margin-top: 18px;
+        font-size: 13px;
+        line-height: 1.55;
+    }
+
+}
