@@ -3998,3 +3998,34 @@ body.lightbox-open {
         z-index: 100 !important;
     }
 }
+/* MOBILE PHOTO NEXT BUTTON FIX */
+
+#photoNextButton {
+    z-index: 1000 !important;
+    bottom: 22px !important;
+}
+
+.photo-scene.active #photoNextButton {
+    animation: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateX(-50%) translateY(0) !important;
+}
+
+@media (max-width: 600px) {
+    #photoNextButton {
+        display: block !important;
+        position: absolute !important;
+        bottom: 22px !important;
+        left: 50% !important;
+        z-index: 1000 !important;
+        min-height: 48px !important;
+        padding: 13px 22px !important;
+        white-space: nowrap !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transform: translateX(-50%) !important;
+    }
+}
