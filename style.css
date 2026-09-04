@@ -3954,3 +3954,47 @@ body.lightbox-open {
     }
 
 }
+/* MOBILE ENVELOPE NEXT BUTTON FIX */
+
+#letterNextButton {
+    z-index: 100 !important;
+    bottom: 24px !important;
+}
+
+.letter-scene.opened #letterNextButton {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateX(-50%) translateY(0) !important;
+}
+
+.letter-scene.opened .envelope-instruction {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+@media (max-width: 600px) {
+
+    .letter-scene {
+        height: 100dvh !important;
+        min-height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    .letter-heading {
+        top: 6% !important;
+    }
+
+    .envelope-area {
+        transform: scale(.68) !important;
+        margin-top: 20px !important;
+    }
+
+    #letterNextButton {
+        bottom: 22px !important;
+        min-height: 48px !important;
+        padding: 13px 22px !important;
+        white-space: nowrap !important;
+        z-index: 100 !important;
+    }
+}
